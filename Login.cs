@@ -24,6 +24,7 @@ namespace GrandHotel
             string command = "select * from Employee where Username = '" + username + "' and Password = '" + password + "'";
             if (Helper.hasRows(command))
             {
+                Helper.currentEmployee = Helper.getRow("select id from employee where Username = '" + username + "' and Password = '" + password + "'", "id");
                 switch (Helper.getRow(command, "JobID"))
                 {
                     case "1":
@@ -58,6 +59,11 @@ namespace GrandHotel
             }
             MessageBox.Show("no");
             
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

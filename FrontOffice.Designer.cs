@@ -110,9 +110,10 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Location = new System.Drawing.Point(161, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(865, 529);
+            this.panel1.Size = new System.Drawing.Size(865, 595);
             this.panel1.TabIndex = 7;
             // 
             // FrontOffice
@@ -120,7 +121,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1055, 601);
+            this.ClientSize = new System.Drawing.Size(1055, 730);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnItem);
             this.Controls.Add(this.btnRoom);

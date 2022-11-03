@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewCustomerDataUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddNewCustomerDataUC.Designer.cs">
+      <DependentUpon>AddNewCustomerDataUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontOffice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,10 @@
     <Compile Include="Supervisor.Designer.cs">
       <DependentUpon>Supervisor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Variables.cs" />
+    <EmbeddedResource Include="AddNewCustomerDataUC.resx">
+      <DependentUpon>AddNewCustomerDataUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrontOffice.resx">
       <DependentUpon>FrontOffice.cs</DependentUpon>
     </EmbeddedResource>

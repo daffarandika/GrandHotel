@@ -13,6 +13,28 @@ namespace GrandHotel
 {
     internal class Helper
     {
+        public static Random random = new Random();
+        public static string generateCode(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWRYZabcdefghijklmnopqrstuvwxyz1234567890";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        public static string currentEmployee = "71";
+        public static class AddNewControl
+        {
+            public static string phoneNumber { get; set; }
+            public static string name { get; set; }
+        }
+        public static class SearchCustomer
+        {
+            public static string customerName { get; set; }
+            public static void fillCustomerDGV(DataGridView dgv)
+            {
+                fillDataGridView("select * from Customer where name like '%" + customerName + "%'", dgv, new string[0]);
+            }
+        }
+        public static string connectionString = "Data Source=DESKTOP-GHNE639;Initial Catalog=GrandHotel;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public static SqlConnection conn = new SqlConnection("Data Source=DESKTOP-GHNE639;Initial Catalog=GrandHotel;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         public static string toSha256(string input)
@@ -29,6 +51,7 @@ namespace GrandHotel
 
         public static void runQuery(string command)
         {
+            
             conn.Open();
             SqlCommand cmd = new SqlCommand(command, conn);
             cmd.ExecuteNonQuery();
@@ -79,6 +102,7 @@ namespace GrandHotel
         }
         public static void fillDataGridView (string command, DataGridView dgv, string[] hiddenColumns)
         {
+
             conn.Open();
             SqlCommand cmd = new SqlCommand(command, conn);
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
