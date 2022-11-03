@@ -24,23 +24,30 @@ namespace GrandHotel
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
             ReservationUC reservationUC = new ReservationUC();
             panel1.Controls.Add(reservationUC);
         }
 
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            CheckInUC checkInUC = new CheckInUC();
+            panel1.Controls.Add(checkInUC);
         }
 
         private void btnAdditionalItem_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            RequestAdditionalItemUC requestAdditionalItemUC = new RequestAdditionalItemUC();
+            panel1.Controls.Add(requestAdditionalItemUC);   
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            CheckOutUC checkOut = new CheckOutUC();
+            panel1.Controls.Add(checkOut);
         }
 
         private void FrontOffice_Load(object sender, EventArgs e)

@@ -37,6 +37,7 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.cmbRoomType = new System.Windows.Forms.ComboBox();
             this.customerData = new System.Windows.Forms.GroupBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.radioAdd = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -56,7 +57,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnSeachRoom = new System.Windows.Forms.Button();
-            this.lblSearch = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.customerData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -151,6 +151,15 @@
             this.customerData.TabStop = false;
             this.customerData.Text = "Customer Data";
             // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(209, 21);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(41, 13);
+            this.lblSearch.TabIndex = 7;
+            this.lblSearch.Text = "Search";
+            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(256, 17);
@@ -202,7 +211,7 @@
             this.groupBox1.Size = new System.Drawing.Size(382, 220);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Customer Data";
+            this.groupBox1.Text = "Items";
             // 
             // btnAddItem
             // 
@@ -325,7 +334,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(627, 560);
+            this.btnSubmit.Location = new System.Drawing.Point(627, 569);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 16;
@@ -342,15 +351,6 @@
             this.btnSeachRoom.Text = "Search Room";
             this.btnSeachRoom.UseVisualStyleBackColor = true;
             this.btnSeachRoom.Click += new System.EventHandler(this.btnSeachRoom_Click);
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(209, 21);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(41, 13);
-            this.lblSearch.TabIndex = 7;
-            this.lblSearch.Text = "Search";
             // 
             // label9
             // 

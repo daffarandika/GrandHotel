@@ -52,6 +52,18 @@
     <Compile Include="AddNewCustomerDataUC.Designer.cs">
       <DependentUpon>AddNewCustomerDataUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckInUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckInUC.Designer.cs">
+      <DependentUpon>CheckInUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOutUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckOutUC.Designer.cs">
+      <DependentUpon>CheckOutUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrontOffice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +97,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="RequestAdditionalItemUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RequestAdditionalItemUC.Designer.cs">
+      <DependentUpon>RequestAdditionalItemUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReservationUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +118,12 @@
     <Compile Include="Variables.cs" />
     <EmbeddedResource Include="AddNewCustomerDataUC.resx">
       <DependentUpon>AddNewCustomerDataUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckInUC.resx">
+      <DependentUpon>CheckInUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOutUC.resx">
+      <DependentUpon>CheckOutUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrontOffice.resx">
       <DependentUpon>FrontOffice.cs</DependentUpon>
@@ -124,6 +148,9 @@
     </Compile>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestAdditionalItemUC.resx">
+      <DependentUpon>RequestAdditionalItemUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReservationUC.resx">
       <DependentUpon>ReservationUC.cs</DependentUpon>

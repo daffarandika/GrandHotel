@@ -26,7 +26,7 @@ namespace GrandHotel
         TextBox txtCustomerPhone = new TextBox();
         Label lblCustomerName = new Label();
         Label lblCustomerPhone = new Label();
-        List<string> addedItem = new List<string>();
+        HashSet<string> addedItem = new HashSet<string>();
         public ReservationUC()
         {
             InitializeComponent();
@@ -101,14 +101,14 @@ namespace GrandHotel
             searchUser.Controls.Clear();
             panel1.Controls.Clear();
             searchUser.Size = new Size(378, 163);
-            txtCustomerName.Location = new Point(150, 28);
             txtCustomerName.Size = new Size(190, 20);
-            txtCustomerPhone.Location = new Point(150, 68);
             txtCustomerPhone.Size = new Size(190, 20);
+            lblCustomerName.Location = new Point(60, 28);
+            txtCustomerName.Location = new Point(150, 28);
             lblCustomerName.Text = "Name";
             lblCustomerPhone.Location = new Point(60, 68);
+            txtCustomerPhone.Location = new Point(150, 68);
             lblCustomerPhone.Text = "Phone";
-            lblCustomerName.Location = new Point(60, 28);
             searchUser.Controls.Add(txtCustomerName);
             searchUser.Controls.Add(txtCustomerPhone);
             searchUser.Controls.Add(lblCustomerPhone);
@@ -200,28 +200,35 @@ namespace GrandHotel
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
+            totalItemPrice = 0;
             string itemName = cmbItem.Text.ToString();
             string itemID = cmbItem.SelectedValue.ToString();
             string qty = txtQty.Value.ToString();
             string price = Helper.getRow("select * from item where name = '" + itemName + "'", "requestprice");
             int i = 0;
-            foreach (string item in addedItem)
-            {
-                if (item == itemName)
-                {
-                    dgvItem.Rows[i].Cells["qty"].Value = Convert.ToInt32(dgvItem.Rows[i].Cells["qty"].Value) + Convert.ToInt32(qty);
-                    dgvItem.Rows[i].Cells["total"].Value = Convert.ToInt32(dgvItem.Rows[i].Cells["qty"].Value) * Convert.ToInt32(price);
-                    return;
-                }
-                i++;
-                //MessageBox.Show(item);
-            }
-            addedItem.Add(itemName);
             int total = Convert.ToInt32(qty) * Convert.ToInt32(price);
-            dtItem.Rows.Add(itemID, itemName, qty, total.ToString());
-            totalItemPrice += Convert.ToInt32(dgvItem.CurrentRow.Cells["total"].Value);
+            if (addedItem.Contains(itemName))
+            {
+                foreach (DataGridViewRow row in dgvItem.Rows)
+                {
+                    if (row.Cells["item"].Value.ToString() == itemName)
+                    {
+                        row.Cells["qty"].Value = Convert.ToInt32(row.Cells["qty"].Value) + Convert.ToInt32(qty);
+                        row.Cells["total"].Value = Convert.ToInt32(row.Cells["qty"].Value) * Convert.ToInt32(price);
+                        break;
+                    }
+                }
+            } else
+            {
+                addedItem.Add(itemName);
+                            dtItem.Rows.Add(itemID, itemName, qty, total.ToString());
+            }
+            foreach (DataGridViewRow row in dgvItem.Rows)
+            {
+                totalItemPrice += Convert.ToInt32(row.Cells["total"].Value);
+            }
             finalPrice += totalItemPrice;
-            lblTotal.Text = finalPrice.ToString();
+            lblTotal.Text = totalItemPrice.ToString();
         }
 
         private void dgvItem_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -312,6 +319,5 @@ namespace GrandHotel
             InitializeComponent();
             ReservationUC_Load(eSender, eLoad);
         }
-
     }          
 }
