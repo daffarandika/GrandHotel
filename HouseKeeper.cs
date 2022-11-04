@@ -16,5 +16,12 @@ namespace GrandHotel
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            CleaningRoomUC cleaningRoomUC = new CleaningRoomUC();
+            panel1.Controls.Add(cleaningRoomUC);
+        }
     }
 }

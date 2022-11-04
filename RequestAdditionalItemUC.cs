@@ -43,7 +43,6 @@ namespace GrandHotel
             string itemID = cmbItem.SelectedValue.ToString();
             string qty = txtQty.Value.ToString();
             string price = Helper.getRow("select * from item where name = '" + itemName + "'", "requestprice");
-            int i = 0;
             int total = Convert.ToInt32(qty) * Convert.ToInt32(price);
             if (addedItem.Contains(itemName))
             {

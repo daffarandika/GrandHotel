@@ -50,7 +50,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(239, 409);
+            this.label2.Location = new System.Drawing.Point(210, 397);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 16;
@@ -121,7 +121,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtQty);
             this.groupBox1.Controls.Add(this.dgvItem);
-            this.groupBox1.Location = new System.Drawing.Point(243, 166);
+            this.groupBox1.Location = new System.Drawing.Point(214, 154);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(479, 220);
             this.groupBox1.TabIndex = 15;
@@ -139,7 +139,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(628, 409);
+            this.btnSubmit.Location = new System.Drawing.Point(599, 397);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 19;
@@ -150,7 +150,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(240, 133);
+            this.label1.Location = new System.Drawing.Point(211, 121);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 18;
@@ -160,7 +160,7 @@
             // 
             this.cmbRoomNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoomNumber.FormattingEnabled = true;
-            this.cmbRoomNumber.Location = new System.Drawing.Point(328, 130);
+            this.cmbRoomNumber.Location = new System.Drawing.Point(299, 118);
             this.cmbRoomNumber.Name = "cmbRoomNumber";
             this.cmbRoomNumber.Size = new System.Drawing.Size(155, 21);
             this.cmbRoomNumber.TabIndex = 17;
@@ -169,7 +169,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblTotal.Location = new System.Drawing.Point(371, 409);
+            this.lblTotal.Location = new System.Drawing.Point(342, 397);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 20);
             this.lblTotal.TabIndex = 20;

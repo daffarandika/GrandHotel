@@ -57,7 +57,17 @@ namespace GrandHotel
         private void btnSeach_Click(object sender, EventArgs e)
         {
             string code = txtBookingCode.Text;
-            fillReservationDGV(code);
+            if (!Helper.hasRows("select ReservationRoom.id, RoomNumber, RoomFloor, RoomType.Name as RoomType, StartDateTime, DurationNights from ReservationRoom  inner join Reservation on ReservationRoom.ReservationID = Reservation.ID inner join Room on RoomID = Room.ID inner join RoomType on RoomTypeID = RoomType.ID where code = '" + code + "'"))
+            {
+                MessageBox.Show("Please recheck the code", "Check in code not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }else if (!Helper.hasRows("select ReservationRoom.id, RoomNumber, RoomFloor, RoomType.Name as RoomType, StartDateTime, DurationNights from ReservationRoom  inner join Reservation on ReservationRoom.ReservationID = Reservation.ID inner join Room on RoomID = Room.ID inner join RoomType on RoomTypeID = RoomType.ID where checkindatetime = '"+Variables.unintializedDate+"' and code = '"+code+"'"))
+            {
+                MessageBox.Show("Every room with this reservation code has been booked in", "Please recheck the code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else
+            {
+                fillReservationDGV(code);
+            }
+
         }
 
         private void txtPhoneNumber_Leave(object sender, EventArgs e)

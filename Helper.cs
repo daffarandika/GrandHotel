@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -16,7 +17,7 @@ namespace GrandHotel
         public static Random random = new Random();
         public static string generateCode(int length)
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWRYZabcdefghijklmnopqrstuvwxyz1234567890";
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
@@ -26,6 +27,7 @@ namespace GrandHotel
             public static string phoneNumber { get; set; }
             public static string name { get; set; }
         }
+        public static string employeeName = "Stephine Oldmeadow";
         public static class SearchCustomer
         {
             public static string customerName { get; set; }

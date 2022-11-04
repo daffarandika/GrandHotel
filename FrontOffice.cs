@@ -19,7 +19,9 @@ namespace GrandHotel
 
         private void btnRoomType_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            MasterRoomTypeUC master = new MasterRoomTypeUC();
+            panel1.Controls.Add(master);
         }
 
         private void btnReservation_Click(object sender, EventArgs e)
@@ -57,12 +59,16 @@ namespace GrandHotel
 
         private void btnRoom_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            MasterRoomUC masterRoomUC = new MasterRoomUC();
+            panel1.Controls.Add(masterRoomUC);  
         }
 
         private void btnItem_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Clear();
+            MasterItemUC item = new MasterItemUC();
+            panel1.Controls.Add(item);
         }
     }
 }
