@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
+using System.Data.SqlClient;
 
 namespace GrandHotel
 {
@@ -31,7 +33,7 @@ namespace GrandHotel
 
         private void fillDGVSchedule()
         {
-            Helper.fillDataGridView("select room.roomnumber, cleaningroomdetail.id, startdatetime, finishdatetime, note, statuscleaning, ItemID, Qty, Status from CleaningRoomDetail inner join Room on RoomID = Room.id inner join CleaningRoom on CleaningRoomID = CleaningRoom.ID inner join CleaningRoomItem on CleaningRoomDetailID = CleaningRoomDetail.ID where employeeid = 71", dgvSchedule, new string[] { "id" });
+            Helper.fillDataGridView("select cleaningroomdetail.id as ID, room.roomnumber, startdatetime, finishdatetime, note, statuscleaning from CleaningRoomDetail inner join Room on RoomID = Room.id inner join CleaningRoom on CleaningRoomID = CleaningRoom.ID inner join CleaningRoomItem on CleaningRoomDetailID = CleaningRoomDetail.ID inner join Item on itemid = item.id where employeeid = 71", dgvSchedule, new string[] {  });
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -65,8 +67,8 @@ namespace GrandHotel
 
             worksheet.Range["A2"].Value2 = "Employee";
             worksheet.Range["A2"].Font.Bold = true;
-            worksheet.Range["B2"].Value2 = Helper.employeeName;
-            workbook.SaveAs( Filename : Helper.employeeName + "_" + DateTime.Now.ToString("ddMMyyyy"));
+            worksheet.Range["B2"].Value2 = Variables.employeeName;
+            workbook.SaveAs( Filename : Variables.employeeName + "_" + DateTime.Now.ToString("ddMMyyyy"));
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -76,12 +78,38 @@ namespace GrandHotel
             
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                string connPath = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ofd.FileName + ";Extended Properties = \"Excel 12.0 Xml;HDR=YES\"; ";
-                OleDbConnection conn = new OleDbConnection(connPath);
-                OleDbDataAdapter oda = new OleDbDataAdapter("Select * from [Sheet1$B5:ZZ]", conn);
-                System.Data.DataTable dt = new System.Data.DataTable();
-                oda.Fill(dt);
-                dgvScheduleDetail.DataSource = dt;
+                try
+                {
+                    string connPath = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + ofd.FileName + ";Extended Properties = \"Excel 12.0 Xml;HDR=YES\"; ";
+                    OleDbConnection conn = new OleDbConnection(connPath);
+                    OleDbDataAdapter oda = new OleDbDataAdapter("Select [id] from [Sheet1$B5:ZZ]", conn);
+                    DataTable dt = new DataTable();
+                    oda.Fill(dt);
+                    string cleaningRoomID = "";
+                    DataTable dt2 = new DataTable();
+                
+                    dt2.Columns.Add("item");
+                    dt2.Columns.Add("qty");
+                    dt2.Columns.Add("status");
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        cleaningRoomID = row["id"].ToString();
+                        Helper.conn.Open();
+                        SqlCommand cmd = new SqlCommand("select CleaningRoomDetail.ID, Item.Name as Item, Qty, status from CleaningRoomDetail inner join CleaningRoomItem on CleaningRoomDetailID = CleaningRoomDetail.ID inner join Item on ItemID = item.ID where cleaningroomdetail.id = '" + cleaningRoomID + "'", Helper.conn);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            dt2.Rows.Add(reader["item"], reader["qty"], reader["status"]);
+                        }
+                        Helper.conn.Close();
+                    }
+
+                    dgvScheduleDetail.DataSource = dt2;
+                } catch 
+                {
+                    MessageBox.Show("The excel that you submitted was not in the correct format", "Incorrect Excel Format", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                }
+
             }
         }
     }

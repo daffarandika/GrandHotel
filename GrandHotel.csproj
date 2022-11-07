@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddHouseKeepingScheduleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddHouseKeepingScheduleUC.Designer.cs">
+      <DependentUpon>AddHouseKeepingScheduleUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddNewCustomerDataUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,9 @@
       <DependentUpon>Supervisor.cs</DependentUpon>
     </Compile>
     <Compile Include="Variables.cs" />
+    <EmbeddedResource Include="AddHouseKeepingScheduleUC.resx">
+      <DependentUpon>AddHouseKeepingScheduleUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddNewCustomerDataUC.resx">
       <DependentUpon>AddNewCustomerDataUC.cs</DependentUpon>
     </EmbeddedResource>

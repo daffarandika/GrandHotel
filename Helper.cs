@@ -21,13 +21,13 @@ namespace GrandHotel
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-        public static string currentEmployee = "71";
+ 
         public static class AddNewControl
         {
             public static string phoneNumber { get; set; }
             public static string name { get; set; }
         }
-        public static string employeeName = "Stephine Oldmeadow";
+        
         public static class SearchCustomer
         {
             public static string customerName { get; set; }

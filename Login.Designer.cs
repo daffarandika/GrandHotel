@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.checkShow = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -95,12 +96,24 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
+            // checkShow
+            // 
+            this.checkShow.AutoSize = true;
+            this.checkShow.Location = new System.Drawing.Point(400, 58);
+            this.checkShow.Name = "checkShow";
+            this.checkShow.Size = new System.Drawing.Size(53, 17);
+            this.checkShow.TabIndex = 6;
+            this.checkShow.Text = "Show";
+            this.checkShow.UseVisualStyleBackColor = true;
+            this.checkShow.CheckedChanged += new System.EventHandler(this.checkShow_CheckedChanged);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(514, 208);
+            this.Controls.Add(this.checkShow);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -125,6 +138,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox checkShow;
     }
 }
 

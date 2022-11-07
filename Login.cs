@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace GrandHotel
 {
     public partial class Login : Form
     {
+        bool showPassword = true;
         public Login()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace GrandHotel
             string command = "select * from Employee where Username = '" + username + "' and Password = '" + password + "'";
             if (Helper.hasRows(command))
             {
-                Helper.currentEmployee = Helper.getRow("select id from employee where Username = '" + username + "' and Password = '" + password + "'", "id");
+                Variables.employeeID = Helper.getRow("select id from employee where Username = '" + username + "' and Password = '" + password + "'", "id");
                 switch (Helper.getRow(command, "JobID"))
                 {
                     case "1":
@@ -63,7 +65,14 @@ namespace GrandHotel
 
         private void Login_Load(object sender, EventArgs e)
         {
+            txtPassword.UseSystemPasswordChar = showPassword;
+        }
 
+        private void checkShow_CheckedChanged(object sender, EventArgs e)
+        {
+            showPassword = !showPassword;
+            txtPassword.UseSystemPasswordChar = showPassword;
+            txtPassword.Focus();
         }
     }
 }

@@ -263,7 +263,7 @@ namespace GrandHotel
             // then link them together using the newly made reservation record's id
             string datetime = DateTime.Now.ToString(Variables.dateTimeFormat);
             string code = Helper.generateCode(6);
-            string employeeID = Helper.currentEmployee;
+            string employeeID = Variables.employeeID;
             string customerID = "";
             //if customer already exits in the database then insert using the check-marked row in dgvCustomer
             if (radioSearch.Checked)
